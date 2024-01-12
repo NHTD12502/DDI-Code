@@ -14,7 +14,7 @@ import pickle
 MODEL_WEB_PATHS = {
 # base form of models trained on skin data
 'HAM10000':'https://drive.google.com/uc?id=1ToT8ifJ5lcWh8Ix19ifWlMcMz9UZXcmo',
-'DeepDerm':'https://drive.google.com/file/d/1qqsrVGrEEm6D9hUBRp2jj__CcCQLN9ps/view?usp=sharing',
+'DeepDerm':'https://drive.google.com/uc?id=1qqsrVGrEEm6D9hUBRp2jj__CcCQLN9ps',
 
 # robust training algorithms
 'GroupDRO':'https://drive.google.com/uc?id=193ippDUYpMaOaEyLjd1DNsOiW0aRXL75',
