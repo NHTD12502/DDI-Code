@@ -5,8 +5,8 @@ import torchvision
 
 from functools import partial
 import pickle
-pickle.load = partial(pickle.load, encoding="latin1")
-pickle.Unpickler = partial(pickle.Unpickler, encoding="latin1")
+# pickle.load = partial(pickle.load, encoding="latin1")
+# pickle.Unpickler = partial(pickle.Unpickler, encoding="latin1")
 # model = torch.load(model_file, map_location=lambda storage, loc: storage, pickle_module=pickle)
 
 
@@ -46,11 +46,12 @@ def load_model(model_name, save_dir="DDI-models", download=True):
             # Requires installation of gdown (pip install gdown)
             import gdown
             gdown.download(MODEL_WEB_PATHS[model_name], model_path)
-    model = torchvision.models.inception_v3(pretrained=False, transform_input=True)
+    # model = torchvision.models.inception_v3(pretrained=False, transform_input=True)
+    model = torchvision.models.inception_v3(init_weights=False, pretrained=False, transform_input=True)
     model.fc = torch.nn.Linear(2048, 2)
     model.AuxLogits.fc = torch.nn.Linear(768, 2)
-    state_dict = torch.load(model_path, map_location=lambda storage, loc: storage, pickle_module=pickle)
-    # state_dict = torch.load(model_path)
+    # state_dict = torch.load(model_path, map_location=lambda storage, loc: storage, pickle_module=pickle)
+    state_dict = torch.load(model_path)
     model.load_state_dict(state_dict)
     model._ddi_name = model_name
     model._ddi_threshold = MODEL_THRESHOLDS[model_name]
